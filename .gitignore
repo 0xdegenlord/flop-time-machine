@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Test output
+coverage/
+
+# Environment files
+.env*
+!.env.example
+
+# Local tooling
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+
+# Supabase CLI
+supabase/.temp/
