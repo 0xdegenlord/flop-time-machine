@@ -9,7 +9,7 @@ import {
 describe("archive search parameters", () => {
   it("parses filters and preserves bigint cursors as text", () => {
     const parsed = parseArchiveSearchParams({
-      q: "  memory lane  ",
+      q: " memory lane ",
       epoch: "3",
       from: "2026-08-01",
       through: "2026-08-31",
@@ -18,8 +18,10 @@ describe("archive search parameters", () => {
     });
 
     expect(parsed.error).toBeNull();
+
     expect(parsed.filters).toEqual({
       query: "memory lane",
+      did: "",
       epochNumber: 3,
       fromDate: "2026-08-01",
       throughDate: "2026-08-31",
@@ -42,6 +44,7 @@ describe("archive search parameters", () => {
     const href = buildArchiveHref(
       {
         query: "hello world",
+        did: "",
         epochNumber: 4,
         fromDate: "",
         throughDate: "2026-08-31",
@@ -56,7 +59,9 @@ describe("archive search parameters", () => {
   });
 
   it("converts an inclusive end date to the RPC's exclusive boundary", () => {
-    expect(endOfThroughDate("2026-08-31")).toBe("2026-09-01T00:00:00.000Z");
+    expect(endOfThroughDate("2026-08-31")).toBe(
+      "2026-09-01T00:00:00.000Z",
+    );
     expect(endOfThroughDate("")).toBeNull();
   });
 });
