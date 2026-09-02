@@ -21,6 +21,7 @@ export type Database = {
           latest_message_timestamp: string | null;
         }[];
       };
+
       get_lobby_epochs: {
         Args: {
           p_before_epoch_number?: number | null;
@@ -37,6 +38,7 @@ export type Database = {
           gap_count: string;
         }[];
       };
+
       get_lobby_messages: {
         Args: {
           p_before_epoch_number?: number | null;
@@ -45,6 +47,7 @@ export type Database = {
           p_from_timestamp?: string | null;
           p_limit?: number;
           p_query?: string | null;
+          p_sender?: string | null;
           p_to_timestamp?: string | null;
         };
         Returns: {
@@ -58,6 +61,7 @@ export type Database = {
         }[];
       };
     };
+
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
   };
