@@ -50,6 +50,7 @@ export async function getLobbyMessages(
     p_limit: ARCHIVE_PAGE_SIZE + 1,
     p_query: filters.query || null,
     p_to_timestamp: endOfThroughDate(filters.throughDate),
+    p_sender: filters.did || null,
   });
 
   if (error) throwRpcError("Could not load lobby messages", error);
